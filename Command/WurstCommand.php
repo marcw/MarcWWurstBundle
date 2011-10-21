@@ -4,6 +4,7 @@ namespace MarcW\Bundle\WurstBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -19,6 +20,7 @@ class WurstCommand extends ContainerAwareCommand
     {
         $this
             ->setName('wurst:print')
+            ->addOption('mit-pommes', null, InputOption::VALUE_NONE, 'Mit Pommes?')
             ->addArgument('type', null, 'Which type of würst you want?', 'classic')
             ->setHelp('Please ask your local curry würst retailer.')
         ;
@@ -35,5 +37,10 @@ class WurstCommand extends ContainerAwareCommand
 
         $wurst = file_get_contents($wurstFile);
         $output->write($wurst);
+
+        if ($input->getOption('mit-pommes')) {
+            $pommes = file_get_contents(__DIR__.'/../Resources/sides/pommes.txt');
+            $output->write($pommes);
+        }
     }
 }
