@@ -1,10 +1,10 @@
-# Würst bundle.
+# Wurst bundle.
 
-Prints a nice würst to your shell.
+Prints a nice wurst to your shell.
 
 ## Contributing
 
-If you got some nice würst ascii art, feel free to contribute ;)
+If you got some nice wurst ascii art, feel free to contribute ;)
 
 ## Credits
 
