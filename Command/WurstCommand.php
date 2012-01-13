@@ -37,7 +37,7 @@ class WurstCommand extends ContainerAwareCommand
         }
 
         $wurst = file_get_contents($wurstFile);
-        $output->write($wurst);
+        $output->writeln($wurst);
 
         if ($input->getOption('mit-pommes')) {
             $pommes = file_get_contents(__DIR__.'/../Resources/sides/pommes.txt');
