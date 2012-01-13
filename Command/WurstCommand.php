@@ -21,6 +21,7 @@ class WurstCommand extends ContainerAwareCommand
         $this
             ->setName('wurst:print')
             ->addOption('mit-pommes', null, InputOption::VALUE_NONE, 'Mit Pommes?')
+            ->addOption('mit-mayo', null, InputOption::VALUE_NONE, 'Mit Mayo?')
             ->addArgument('type', null, 'Which type of würst you want?', 'classic')
             ->setHelp('Please ask your local curry würst retailer.')
         ;
@@ -41,6 +42,11 @@ class WurstCommand extends ContainerAwareCommand
         if ($input->getOption('mit-pommes')) {
             $pommes = file_get_contents(__DIR__.'/../Resources/sides/pommes.txt');
             $output->write($pommes);
+        }
+
+        if ($input->getOption('mit-mayo')) {
+            $mayo = file_get_contents(__DIR__.'/../Resources/sides/mayonnaise.txt');
+            $output->write($mayo);
         }
     }
 }
