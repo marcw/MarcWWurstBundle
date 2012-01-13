@@ -1,0 +1,49 @@
+Based on: http://www.wurstblog.de/aufschnitt/ascii-wurst
+                                                              .c.
+                                                             .0MXd'
+                                                            ,KMMMMWO:.
+                                                           :NMMMMMMMMXo.
+                                           .,:cllllc:,..  lWMMMMMMMMMMMWk;
+                                     .,cd0NWMMMMMMMMMMWN00WMMMMMMMMMMMMMMMKo.
+                                  .ckXMMMMMMMMMMMMMMMMMMMMMMMMWNXK00Okxdolc:,
+                               'l0WMMMMMMMM MMMMMM MMMMMMMMMMNo.
+                            .l0WMMMMMMMMMMMM MMMM MMMMMMMMMMMMMWo
+                         .cOWMMMMMMMMMMMMMMMM MM MMMMMMMMMMMMMMMN'
+                       'dXMMMMMMMMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMX.
+                     ;OWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMX;
+                  .lKWMMMMMMMMMMMM      MMMMMMMMMMMMMMMMMMMMW0l.
+                .oNMMMMMMMMMMMMMMM MMMMMMMMMMMMMMMMMMMMMMXkc.
+               ;KMMMMMMMMMMMMMMMMM   MMMMMMMMMMMMMMMMWKd;.
+             .xWMMMMMMMMMMMMMMMMMM MMMMMMMMMMMMMMMMXd,
+            '0MMMMMMMMMMMMMMMMMMMM      MMMMMMMWO:.
+           ;XMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNx'
+          :NMMMMMMMMMMMM      MMMMMMMMMMMMMMWk'
+         ;NMMMMMMMMMMMMM MMMMMMMMMMMMMMMMMMK;
+        .XMMMMMMMMMMMMMM MM   MMMMMMMMMMMWk.
+        kMMMMMMMMMMMMMMM MMMM MMMMMMMMMMWd
+       ;WMMMMMMMMMMMMMMM      MMMMMMMMMMx
+       kMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWk.
+      .XMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM0.
+      ;WMMMMMMMMMMMMMM  MMMMMMMMMMMMMMo
+      ;WMMMMMMMMMMMMM MM MMMMMMMMMMMMMl
+      ,NMMMMMMMMMMMM M  M MMMMMMMMMMMMd
+      .XMMMMMMMMMMM MMMMMM MMMMMMMMMMM0.
+       xMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWk.
+       ;WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMd
+        kMMMMMMMMMMMMM  MMMM MMMMMMMMMMMWl
+        'XMMMMMMMMMMMM M MMM MMMMMMMMMMMMWo
+         :NMMMMMMMMMMM MM MM MMMMMMMMMMMMMWk.
+          cWMMMMMMMMMM MMM M MMMMMMMMMMMMMMK;
+           :XMMMMMMMMM MMMM  MMMMMMMMMMMMMMMMWl
+            .0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN'
+             .xWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMK.
+               :XMMMMMMMMMMMMMMMMMMMMMMMMMMMMK,
+                .dNMMMMMMMMMMMMMMMMMMMMMMMMKl.
+                  .ckXWMMMMMMMMMMMMMMMMMXd,
+                      ':lxkO0KK00WMMMMMMN0xl;.
+                                .KMMMMMMMMMMMWXOd:'.
+                                .0MMMMMMMMMMMMMMMN0o'
+                                 OMMMMMMMMMMN0xc,.
+                                 OMMMMWX0dc'.
+                                 xKkl;.
+                                 ..
