@@ -37,7 +37,7 @@ class WurstCommand extends ContainerAwareCommand
 
         parent::__construct($name);
     }
-    
+
     protected function configure()
     {
         $this
@@ -82,8 +82,8 @@ class WurstCommand extends ContainerAwareCommand
         }
 
         if ($input->getOption('mit-pretzel')) {
-            $mayo = file_get_contents(__DIR__.'/../Resources/sides/pretzel.txt');
-            $output->write($mayo);
+            $pretzel = file_get_contents(__DIR__.'/../Resources/sides/pretzel.txt');
+            $output->write($pretzel);
         }
     }
 }
