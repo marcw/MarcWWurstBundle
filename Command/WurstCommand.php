@@ -47,6 +47,7 @@ class WurstCommand extends ContainerAwareCommand
             ->addOption('mit-beer', null, InputOption::VALUE_NONE, 'Mit Beer?')
             ->addOption('mit-pretzel', null, InputOption::VALUE_NONE, 'Mit Pretzel?')
             ->addOption('mit-kaffee', null, InputOption::VALUE_NONE, 'Mit Kaffee?')
+            ->addOption('mit-kase', null, InputOption::VALUE_NONE, 'Mit Kase?')
             ->addArgument('type', null, sprintf('Which type of würst you want (%s)?', implode(', ', $this->wurstTypes)), 'classic')
             ->setHelp('Please ask your local curry würst retailer.')
         ;
@@ -89,6 +90,11 @@ class WurstCommand extends ContainerAwareCommand
 
         if ($input->getOption('mit-kaffee')) {
             $kaffee = file_get_contents(__DIR__.'/../Resources/sides/kaffee.txt');
+            $output->write($kaffee);
+        }
+
+        if ($input->getOption('mit-kase')) {
+            $kaffee = file_get_contents(__DIR__.'/../Resources/sides/kase.txt');
             $output->write($kaffee);
         }
     }
