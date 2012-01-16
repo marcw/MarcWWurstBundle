@@ -94,8 +94,8 @@ class WurstCommand extends ContainerAwareCommand
         }
 
         if ($input->getOption('mit-kase')) {
-            $kaffee = file_get_contents(__DIR__.'/../Resources/sides/kase.txt');
-            $output->write($kaffee);
+            $kase = file_get_contents(__DIR__.'/../Resources/sides/kase.txt');
+            $output->write($kase);
         }
     }
 }
