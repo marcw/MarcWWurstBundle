@@ -10,7 +10,7 @@ class WurstCommandTest extends WurstCommandTestCase
     {
         $this->commandTester->execute(array('command' => $this->command->getName()));
 
-        $expectedOutput = $this->getExpectedWurstContent('classic');
+        $expectedOutput = $this->getExpectedWurstContent($this->defaultWurst);
 
         $this->assertSame($expectedOutput, $this->commandTester->getDisplay());
     }
@@ -40,7 +40,7 @@ class WurstCommandTest extends WurstCommandTestCase
                 $option => true
             ));
 
-            $expectedOutput = $this->getExpectedSideContentForGivenType($side, 'classic');
+            $expectedOutput = $this->getExpectedSideContentForGivenType($side, $this->defaultWurst);
 
             $this->assertSame($expectedOutput, $this->commandTester->getDisplay());
         }

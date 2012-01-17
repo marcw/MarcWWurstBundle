@@ -10,6 +10,7 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class WurstCommandTestCase extends \PHPUnit_Framework_TestCase
 {
+    protected $defaultWurst = 'classic';
     protected $wurstResourcesDirectory;
     protected $sideResourcesDirectory;
     protected $command;
