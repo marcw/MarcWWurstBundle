@@ -10,8 +10,7 @@ class WurstCommandTest extends WurstCommandTestCase
     {
         $this->commandTester->execute(array('command' => $this->command->getName()));
 
-        $expectedOutput = file_get_contents($this->wurstResourcesDirectory.'classic.txt');
-        $expectedOutput .= PHP_EOL;
+        $expectedOutput = $this->getExpectedWurstContent('classic');
 
         $this->assertSame($expectedOutput, $this->commandTester->getDisplay());
     }
@@ -25,8 +24,7 @@ class WurstCommandTest extends WurstCommandTestCase
                 'type' => $wurstType
             ));
 
-            $expectedOutput = file_get_contents($this->wurstResourcesDirectory.$wurstType.'.txt');
-            $expectedOutput .= PHP_EOL;
+            $expectedOutput = $this->getExpectedWurstContent($wurstType);
 
             $this->assertSame($expectedOutput, $this->commandTester->getDisplay());
         }
@@ -42,11 +40,32 @@ class WurstCommandTest extends WurstCommandTestCase
                 $option => true
             ));
 
-            $expectedOutput = file_get_contents($this->wurstResourcesDirectory.'classic.txt');
-            $expectedOutput .= PHP_EOL;
-            $expectedOutput .= file_get_contents($this->sideResourcesDirectory.$side.'.txt');
+            $expectedOutput = $this->getExpectedSideContentForGivenType($side, 'classic');
 
             $this->assertSame($expectedOutput, $this->commandTester->getDisplay());
         }
+    }
+    
+    private function getExpectedSideContentForGivenType($side, $givenType)
+    {
+        $content = $this->getExpectedWurstContent($givenType);
+        $content .= $this->getContentFromDirectoryAndFile($this->sideResourcesDirectory, $side);
+        
+        return $content;
+    }
+    
+    private function getExpectedWurstContent($wurst)
+    {
+        $content = $this->getContentFromDirectoryAndFile($this->wurstResourcesDirectory, $wurst);
+        $content .= PHP_EOL;
+        
+        return $content;
+    }
+    
+    private function getContentFromDirectoryAndFile($directory, $file)
+    {
+        $content = file_get_contents($directory.$file.'.txt');
+        
+        return $content;
     }
 }
