@@ -17,7 +17,7 @@ class WurstCommandTest extends \PHPUnit_Framework_TestCase
     private $wurstTypes;
     private $sides;
     
-    public function setUp()
+    public function __construct()
     {
         $resourceDirectory = $this->getResourceDirectory();
         $this->wurstResourcesDirectory = $resourceDirectory.'wurst'.DIRECTORY_SEPARATOR;;
