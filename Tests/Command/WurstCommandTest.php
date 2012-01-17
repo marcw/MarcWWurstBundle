@@ -15,6 +15,7 @@ class WurstCommandTest extends \PHPUnit_Framework_TestCase
     private $command;
     private $commandTester;
     private $wurstTypes;
+    private $sides;
     
     public function setUp()
     {
@@ -26,6 +27,7 @@ class WurstCommandTest extends \PHPUnit_Framework_TestCase
         $this->commandTester = new CommandTester($this->command);
         
         $this->findWurstTypes();
+        $this->findSides();
     }
     
     private function getResourceDirectory()
@@ -58,6 +60,22 @@ class WurstCommandTest extends \PHPUnit_Framework_TestCase
 
         foreach ($foundFiles as $foundFile) {
             $this->wurstTypes[] = basename($foundFile->getRelativePathName(), '.txt');
+        }
+    }
+    
+    private function findSides()
+    {
+        $foundFiles = Finder::create()
+            ->in($this->sideResourcesDirectory)
+            ->name('*.txt')
+            ->depth(0)
+            ->filter(function (SplFileInfo $file) {
+                return $file->isReadable();
+            })
+        ;
+
+        foreach ($foundFiles as $foundFile) {
+            $this->sides[] = basename($foundFile->getRelativePathName(), '.txt');
         }
     }
 
