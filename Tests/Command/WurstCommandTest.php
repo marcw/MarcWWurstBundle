@@ -26,8 +26,8 @@ class WurstCommandTest extends \PHPUnit_Framework_TestCase
         $this->setCommand();
         $this->commandTester = new CommandTester($this->command);
 
-        $this->wurstTypes = $this->findFilesFromGivenDirectory($this->wurstResourcesDirectory);
-        $this->sides = $this->findFilesFromGivenDirectory($this->sideResourcesDirectory);
+        $this->wurstTypes = $this->findFilenamesFromGivenDirectory($this->wurstResourcesDirectory);
+        $this->sides = $this->findFilenamesFromGivenDirectory($this->sideResourcesDirectory);
     }
     
     private function getResourceDirectory()
@@ -47,7 +47,7 @@ class WurstCommandTest extends \PHPUnit_Framework_TestCase
         $this->command = $application->find('wurst:print');
     }
     
-    private function findFilesFromGivenDirectory($givenDirectory)
+    private function findFilenamesFromGivenDirectory($givenDirectory)
     {
         $foundFiles = Finder::create()
             ->in($givenDirectory)
@@ -58,12 +58,12 @@ class WurstCommandTest extends \PHPUnit_Framework_TestCase
             })
         ;
 
-        $formatedFiles = array();
+        $filenames = array();
         foreach ($foundFiles as $foundFile) {
-            $formatedFiles[] = basename($foundFile->getRelativePathName(), '.txt');
+            $filenames[] = basename($foundFile->getRelativePathName(), '.txt');
         }
         
-        return $formatedFiles;
+        return $filenames;
     }
 
     public function testDefaultCommand()
