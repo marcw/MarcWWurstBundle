@@ -11,13 +11,16 @@ use Symfony\Component\Finder\SplFileInfo;
 class WurstCommandTest extends \PHPUnit_Framework_TestCase
 {
     private $wurstResourcesDirectory;
+    private $sideResourcesDirectory;
     private $command;
     private $commandTester;
     private $wurstTypes;
     
     public function setUp()
     {
-        $this->setWurstResourcesDirectory();
+        $resourceDirectory = $this->getResourceDirectory();
+        $this->wurstResourcesDirectory = $resourceDirectory.'wurst'.DIRECTORY_SEPARATOR;;
+        $this->sideResourcesDirectory = $resourceDirectory.'sides'.DIRECTORY_SEPARATOR;
         
         $this->setCommand();
         $this->commandTester = new CommandTester($this->command);
@@ -25,12 +28,12 @@ class WurstCommandTest extends \PHPUnit_Framework_TestCase
         $this->findWurstTypes();
     }
     
-    private function setWurstResourcesDirectory()
+    private function getResourceDirectory()
     {
         $sourceDirectory = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR;
         $resourceDirectory = $sourceDirectory.'Resources'.DIRECTORY_SEPARATOR;
         
-        $this->wurstResourcesDirectory = $resourceDirectory.'wurst'.DIRECTORY_SEPARATOR;
+        return $resourceDirectory;
     }
     
     private function setCommand()
