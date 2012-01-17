@@ -91,4 +91,22 @@ class WurstCommandTest extends \PHPUnit_Framework_TestCase
             $this->assertSame($expectedOutput, $this->commandTester->getDisplay());
         }
     }
+    
+    public function testSides()
+    {
+        foreach ($this->sides as $side)
+        {
+            $option = "--mit-$side";
+            $this->commandTester->execute(array(
+                'command' => $this->command->getName(),
+                $option => true
+            ));
+
+            $expectedOutput = file_get_contents($this->wurstResourcesDirectory.'classic.txt');
+            $expectedOutput .= PHP_EOL;
+            $expectedOutput .= file_get_contents($this->sideResourcesDirectory.$side.'.txt');
+
+            $this->assertSame($expectedOutput, $this->commandTester->getDisplay());
+        }
+    }
 }
