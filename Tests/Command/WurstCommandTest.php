@@ -46,6 +46,26 @@ class WurstCommandTest extends WurstCommandTestCase
         }
     }
     
+    public function testSidesWithAllWurstTypes()
+    {
+        foreach ($this->sides as $side)
+        {
+            $option = "--mit-$side";
+            foreach ($this->wurstTypes as $wurstType)
+            {
+                $this->commandTester->execute(array(
+                    'command' => $this->command->getName(),
+                    'type' => $wurstType,
+                    $option => true
+                ));
+
+                $expectedOutput = $this->getExpectedSideContentForGivenType($side, $wurstType);
+
+                $this->assertSame($expectedOutput, $this->commandTester->getDisplay());
+            }
+        }
+    }
+    
     private function getExpectedSideContentForGivenType($side, $givenType)
     {
         $content = $this->getExpectedWurstContent($givenType);
