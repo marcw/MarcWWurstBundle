@@ -17,15 +17,15 @@ class WurstCommandTest extends \PHPUnit_Framework_TestCase
     
     public function setUp()
     {
-        $this->findWurstResourcesDirectory();
+        $this->setWurstResourcesDirectory();
         
-        $this->findCommand();
+        $this->setCommand();
         $this->commandTester = new CommandTester($this->command);
         
         $this->findWurstTypes();
     }
     
-    private function findWurstResourcesDirectory()
+    private function setWurstResourcesDirectory()
     {
         $sourceDirectory = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR;
         $resourceDirectory = $sourceDirectory.'Resources'.DIRECTORY_SEPARATOR;
@@ -33,7 +33,7 @@ class WurstCommandTest extends \PHPUnit_Framework_TestCase
         $this->wurstResourcesDirectory = $resourceDirectory.'wurst'.DIRECTORY_SEPARATOR;
     }
     
-    private function findCommand()
+    private function setCommand()
     {
         $mockedKernel = $this->getMock('Symfony\\Component\\HttpKernel\\Kernel', array(), array(), '', false);
         $application = new Application($mockedKernel);
@@ -68,7 +68,7 @@ class WurstCommandTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($expectedOutput, $this->commandTester->getDisplay());
     }
 
-    public function testTypes()
+    public function testWurstTypes()
     {
         foreach ($this->wurstTypes as $wurstType)
         {
