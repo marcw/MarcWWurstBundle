@@ -22,12 +22,12 @@ class WurstCommandTest extends \PHPUnit_Framework_TestCase
         $resourceDirectory = $this->getResourceDirectory();
         $this->wurstResourcesDirectory = $resourceDirectory.'wurst'.DIRECTORY_SEPARATOR;;
         $this->sideResourcesDirectory = $resourceDirectory.'sides'.DIRECTORY_SEPARATOR;
-        
+
         $this->setCommand();
         $this->commandTester = new CommandTester($this->command);
-        
-        $this->findWurstTypes();
-        $this->findSides();
+
+        $this->wurstTypes = $this->findFilesFromGivenDirectory($this->wurstResourcesDirectory);
+        $this->sides = $this->findFilesFromGivenDirectory($this->sideResourcesDirectory);
     }
     
     private function getResourceDirectory()
@@ -47,10 +47,10 @@ class WurstCommandTest extends \PHPUnit_Framework_TestCase
         $this->command = $application->find('wurst:print');
     }
     
-    private function findWurstTypes()
+    private function findFilesFromGivenDirectory($givenDirectory)
     {
         $foundFiles = Finder::create()
-            ->in($this->wurstResourcesDirectory)
+            ->in($givenDirectory)
             ->name('*.txt')
             ->depth(0)
             ->filter(function (SplFileInfo $file) {
@@ -58,25 +58,12 @@ class WurstCommandTest extends \PHPUnit_Framework_TestCase
             })
         ;
 
+        $formatedFiles = array();
         foreach ($foundFiles as $foundFile) {
-            $this->wurstTypes[] = basename($foundFile->getRelativePathName(), '.txt');
+            $formatedFiles[] = basename($foundFile->getRelativePathName(), '.txt');
         }
-    }
-    
-    private function findSides()
-    {
-        $foundFiles = Finder::create()
-            ->in($this->sideResourcesDirectory)
-            ->name('*.txt')
-            ->depth(0)
-            ->filter(function (SplFileInfo $file) {
-                return $file->isReadable();
-            })
-        ;
-
-        foreach ($foundFiles as $foundFile) {
-            $this->sides[] = basename($foundFile->getRelativePathName(), '.txt');
-        }
+        
+        return $formatedFiles;
     }
 
     public function testDefaultCommand()
