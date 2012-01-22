@@ -89,7 +89,7 @@ class WurstCommand extends ContainerAwareCommand
         }
 
         if ($input->getOption('mit-kaffee')) {
-            $kaffee = file_get_contents(__DIR__.'/../Resources/sides/kaffee.txt');
+            $kaffee = file_get_contents(__DIR__.'/../Resources/sides/coffee.txt');
             $output->write($kaffee);
         }
 
