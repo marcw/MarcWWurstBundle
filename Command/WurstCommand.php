@@ -48,6 +48,7 @@ class WurstCommand extends ContainerAwareCommand
             ->addOption('mit-pretzel', null, InputOption::VALUE_NONE, 'Mit Pretzel?')
             ->addOption('mit-kaffee', null, InputOption::VALUE_NONE, 'Mit Kaffee?')
             ->addOption('mit-kase', null, InputOption::VALUE_NONE, 'Mit Kase?')
+            ->addOption('mit-chocolate', null, InputOption::VALUE_NONE, 'Mit Chocolate?')
             ->addArgument('type', null, sprintf('Which type of würst you want (%s)?', implode(', ', $this->wurstTypes)), 'classic')
             ->setHelp('Please ask your local curry würst retailer.')
         ;
@@ -55,8 +56,7 @@ class WurstCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $wurstFile = sprintf(__DIR__.'/../Resources/wurst/%s.txt', $input->getArgument('type'));
-        if (!is_readable($wurstFile)) {
+        if (!in_array($input->getArgument('type'), $this->wurstTypes, true)) {
             $output->writeln(sprintf(
                 '<error>This würst is not part of this bundle. Try one of "%s" or consider contributing!</error>',
                 implode(', ', $this->wurstTypes)
@@ -65,7 +65,7 @@ class WurstCommand extends ContainerAwareCommand
             return self::ERROR_WURST_NOT_FOUND;
         }
 
-        $wurst = file_get_contents($wurstFile);
+        $wurst = file_get_contents(sprintf(__DIR__.'/../Resources/wurst/%s.txt', $input->getArgument('type')));
         $output->writeln($wurst);
 
         if ($input->getOption('mit-pommes')) {
@@ -89,13 +89,18 @@ class WurstCommand extends ContainerAwareCommand
         }
 
         if ($input->getOption('mit-kaffee')) {
-            $kaffee = file_get_contents(__DIR__.'/../Resources/sides/kaffee.txt');
+            $kaffee = file_get_contents(__DIR__.'/../Resources/sides/coffee.txt');
             $output->write($kaffee);
         }
 
         if ($input->getOption('mit-kase')) {
             $kase = file_get_contents(__DIR__.'/../Resources/sides/kase.txt');
             $output->write($kase);
+        }
+
+        if ($input->getOption('mit-chocolate')) {
+            $chocolate = file_get_contents(__DIR__.'/../Resources/sides/chocolate.txt');
+            $output->write($chocolate);
         }
     }
 }
