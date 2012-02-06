@@ -56,8 +56,7 @@ class WurstCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $wurstFile = sprintf(__DIR__.'/../Resources/wurst/%s.txt', $input->getArgument('type'));
-        if (!is_readable($wurstFile)) {
+        if (!in_array($input->getArgument('type'), $this->wurstTypes, true)) {
             $output->writeln(sprintf(
                 '<error>This würst is not part of this bundle. Try one of "%s" or consider contributing!</error>',
                 implode(', ', $this->wurstTypes)
@@ -66,7 +65,7 @@ class WurstCommand extends ContainerAwareCommand
             return self::ERROR_WURST_NOT_FOUND;
         }
 
-        $wurst = file_get_contents($wurstFile);
+        $wurst = file_get_contents(sprintf(__DIR__.'/../Resources/wurst/%s.txt', $input->getArgument('type')));
         $output->writeln($wurst);
 
         if ($input->getOption('mit-pommes')) {
