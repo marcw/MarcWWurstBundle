@@ -43,10 +43,10 @@ class WurstCommand extends ContainerAwareCommand
         $this
             ->setName('wurst:print')
             ->addOption('mit-pommes', null, InputOption::VALUE_NONE, 'Mit Pommes?')
-            ->addOption('mit-mayo', null, InputOption::VALUE_NONE, 'Mit Mayo?')
+            ->addOption('mit-mayonnaise', null, InputOption::VALUE_NONE, 'Mit Mayo?')
             ->addOption('mit-beer', null, InputOption::VALUE_NONE, 'Mit Beer?')
             ->addOption('mit-pretzel', null, InputOption::VALUE_NONE, 'Mit Pretzel?')
-            ->addOption('mit-kaffee', null, InputOption::VALUE_NONE, 'Mit Kaffee?')
+            ->addOption('mit-coffee', null, InputOption::VALUE_NONE, 'Mit Kaffee?')
             ->addOption('mit-kase', null, InputOption::VALUE_NONE, 'Mit Kase?')
             ->addOption('mit-chocolate', null, InputOption::VALUE_NONE, 'Mit Chocolate?')
             ->addArgument('type', null, sprintf('Which type of würst you want (%s)?', implode(', ', $this->wurstTypes)), 'classic')
@@ -73,7 +73,7 @@ class WurstCommand extends ContainerAwareCommand
             $output->write($pommes);
         }
 
-        if ($input->getOption('mit-mayo')) {
+        if ($input->getOption('mit-mayonnaise')) {
             $mayo = file_get_contents(__DIR__.'/../Resources/sides/mayonnaise.txt');
             $output->write($mayo);
         }
@@ -88,7 +88,7 @@ class WurstCommand extends ContainerAwareCommand
             $output->write($pretzel);
         }
 
-        if ($input->getOption('mit-kaffee')) {
+        if ($input->getOption('mit-coffee')) {
             $kaffee = file_get_contents(__DIR__.'/../Resources/sides/coffee.txt');
             $output->write($kaffee);
         }
