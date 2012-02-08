@@ -17,7 +17,7 @@ class WurstCommandTestCase extends \PHPUnit_Framework_TestCase
     protected $commandTester;
     protected $wurstTypes;
     protected $sides;
-    
+
     public function __construct()
     {
         $resourceDirectory = $this->getResourceDirectory();
@@ -30,15 +30,15 @@ class WurstCommandTestCase extends \PHPUnit_Framework_TestCase
         $this->wurstTypes = $this->findFilenamesFromGivenDirectory($this->wurstResourcesDirectory);
         $this->sides = $this->findFilenamesFromGivenDirectory($this->sideResourcesDirectory);
     }
-    
+
     protected function getResourceDirectory()
     {
         $sourceDirectory = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR;
         $resourceDirectory = $sourceDirectory.'Resources'.DIRECTORY_SEPARATOR;
-        
+
         return $resourceDirectory;
     }
-    
+
     protected function setCommand()
     {
         $mockedKernel = $this->getMock('Symfony\\Component\\HttpKernel\\Kernel', array(), array(), '', false);
@@ -47,7 +47,7 @@ class WurstCommandTestCase extends \PHPUnit_Framework_TestCase
 
         $this->command = $application->find('wurst:print');
     }
-    
+
     protected function findFilenamesFromGivenDirectory($givenDirectory)
     {
         $foundFiles = Finder::create()
@@ -63,7 +63,7 @@ class WurstCommandTestCase extends \PHPUnit_Framework_TestCase
         foreach ($foundFiles as $foundFile) {
             $filenames[] = basename($foundFile->getRelativePathName(), '.txt');
         }
-        
+
         return $filenames;
     }
 }

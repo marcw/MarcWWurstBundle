@@ -29,7 +29,7 @@ class WurstCommandTest extends WurstCommandTestCase
             $this->assertSame($expectedOutput, $this->commandTester->getDisplay());
         }
     }
-    
+
     public function testSides()
     {
         foreach ($this->sides as $side)
@@ -45,7 +45,7 @@ class WurstCommandTest extends WurstCommandTestCase
             $this->assertSame($expectedOutput, $this->commandTester->getDisplay());
         }
     }
-    
+
     public function testSidesWithAllWurstTypes()
     {
         foreach ($this->sides as $side)
@@ -65,27 +65,28 @@ class WurstCommandTest extends WurstCommandTestCase
             }
         }
     }
-    
+
     private function getExpectedSideContentForGivenType($side, $givenType)
     {
         $content = $this->getExpectedWurstContent($givenType);
         $content .= $this->getContentFromDirectoryAndFile($this->sideResourcesDirectory, $side);
-        
+
         return $content;
     }
-    
+
     private function getExpectedWurstContent($wurst)
     {
         $content = $this->getContentFromDirectoryAndFile($this->wurstResourcesDirectory, $wurst);
         $content .= PHP_EOL;
-        
+
         return $content;
     }
-    
+
     private function getContentFromDirectoryAndFile($directory, $file)
     {
         $content = file_get_contents($directory.$file.'.txt');
-        
+
         return $content;
     }
 }
+
