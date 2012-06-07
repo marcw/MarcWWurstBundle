@@ -17,8 +17,7 @@ class WurstCommandTest extends WurstCommandTestCase
 
     public function testWurstTypes()
     {
-        foreach ($this->wurstTypes as $wurstType)
-        {
+        foreach ($this->wurstTypes as $wurstType) {
             $this->commandTester->execute(array(
                 'command' => $this->command->getName(),
                 'type' => $wurstType
@@ -32,8 +31,7 @@ class WurstCommandTest extends WurstCommandTestCase
 
     public function testSides()
     {
-        foreach ($this->sides as $side)
-        {
+        foreach ($this->sides as $side) {
             $option = "--mit-$side";
             $this->commandTester->execute(array(
                 'command' => $this->command->getName(),
@@ -48,11 +46,9 @@ class WurstCommandTest extends WurstCommandTestCase
 
     public function testSidesWithAllWurstTypes()
     {
-        foreach ($this->sides as $side)
-        {
+        foreach ($this->sides as $side) {
             $option = "--mit-$side";
-            foreach ($this->wurstTypes as $wurstType)
-            {
+            foreach ($this->wurstTypes as $wurstType) {
                 $this->commandTester->execute(array(
                     'command' => $this->command->getName(),
                     'type' => $wurstType,
