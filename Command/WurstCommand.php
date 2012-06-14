@@ -52,7 +52,7 @@ class WurstCommand extends ContainerAwareCommand
             ->addOption('mit-wine', null, InputOption::VALUE_NONE, 'Mit Wine?')
             ->addOption('mit-tea', null, InputOption::VALUE_NONE, 'Mit Tea?')
             ->addOption('mit-ketchup', null, InputOption::VALUE_NONE, 'Mit Ketchup?')
-			->addOption('mit-carrot', null, InputOption::VALUE_NONE, 'Mit Carrot?')
+            ->addOption('mit-carrot', null, InputOption::VALUE_NONE, 'Mit Carrot?')
             ->addArgument('type', null, sprintf('Which type of würst you want (%s)?', implode(', ', $this->wurstTypes)), 'classic')
             ->setHelp('Please ask your local curry würst retailer.')
         ;
