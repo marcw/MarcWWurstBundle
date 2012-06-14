@@ -121,5 +121,10 @@ class WurstCommand extends ContainerAwareCommand
             $ketchup = file_get_contents(__DIR__.'/../Resources/sides/ketchup.txt');
             $output->write($ketchup);
         }
+
+        if ($input->getOption('mit-carrot')) {
+            $carrot = file_get_contents(__DIR__.'/../Resources/sides/carrot.txt');
+            $output->write($carrot);
+        }
     }
 }
