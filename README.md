@@ -45,9 +45,7 @@ $ git submodule add git://github.com/marcw/MarcWWurstBundle.git vendor/bundles/M
 $ git submodule update --init
 ```
 
-### Step 2: Configure the Autoloader
-
-Add the `MarcW` namespace to your autoloader:
+Note that using submodules requires manually registering the `MarcW` namespace to your autoloader:
 
 ``` php
 <?php
@@ -59,7 +57,7 @@ $loader->registerNamespaces(array(
 ));
 ```
 
-### Step 3: Enable the bundle
+### Step 2: Enable the bundle
 
 Finally, enable the bundle in the kernel:
 
