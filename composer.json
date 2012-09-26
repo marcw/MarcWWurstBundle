@@ -1,0 +1,20 @@
+{
+    "name": "marcw/wurst-bundle",
+    "type": "symfony-bundle",
+    "description": "Prints a nice wurst to your shell.",
+    "keywords": ["wurst"],
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Marc Weistroff",
+            "email": "marc@weistroff.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+    },
+    "autoload": {
+        "psr-0": { "MarcW": "bundles" }
+    },
+    "target-dir": "bundles/MarcW/Bundle/WurstBundle",
+}

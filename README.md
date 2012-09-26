@@ -18,20 +18,22 @@ Ultimately, the MarcWWurstBundle files should be downloaded to the
 This can be done in several ways, depending on your preference. The first
 method is the standard Symfony2 method.
 
-**Using the vendors script**
+**Using Composer**
 
-Add the following lines in your `deps` file:
+Add MarcWWurstBundle in your composer.json:
 
 ```
-[MarcWWurstBundle]
-    git=git://github.com/marcw/MarcWWurstBundle.git
-    target=bundles/MarcW/Bundle/WurstBundle
+{
+    "require": {
+        "marcw/wurst-bundle": "*"
+    }
+}
 ```
 
-Now, run the vendors script to download the bundle:
+Now tell composer to download the bundle by running the command:
 
 ``` bash
-$ php bin/vendors install
+$ php composer.phar update marcw/wurst-bundle
 ```
 
 **Using submodules**
@@ -43,9 +45,7 @@ $ git submodule add git://github.com/marcw/MarcWWurstBundle.git vendor/bundles/M
 $ git submodule update --init
 ```
 
-### Step 2: Configure the Autoloader
-
-Add the `MarcW` namespace to your autoloader:
+Note that using submodules requires manually registering the `MarcW` namespace to your autoloader:
 
 ``` php
 <?php
@@ -57,7 +57,7 @@ $loader->registerNamespaces(array(
 ));
 ```
 
-### Step 3: Enable the bundle
+### Step 2: Enable the bundle
 
 Finally, enable the bundle in the kernel:
 
