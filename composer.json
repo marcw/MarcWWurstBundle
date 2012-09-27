@@ -14,7 +14,7 @@
         "php": ">=5.3.2"
     },
     "autoload": {
-        "psr-0": { "MarcW": "bundles" }
+        "psr-0": { "MarcW\\Bundle\\WurstBundle": "" }
     },
-    "target-dir": "bundles/MarcW/Bundle/WurstBundle"
+    "target-dir": "MarcW/Bundle/WurstBundle"
 }
