@@ -135,7 +135,7 @@ class WurstCommand extends ContainerAwareCommand
         }
         
         if ($input->getOption('mit-sfliveWurst')) {
-            $sfliveWurst = file_get_contents(__DIR__.'/../Resources/sides/mit-sfliveWurst.txt');
+            $sfliveWurst = file_get_contents(__DIR__.'/../Resources/sides/sfliveWurst.txt');
             $output->write($sfliveWurst);
         }
     }
