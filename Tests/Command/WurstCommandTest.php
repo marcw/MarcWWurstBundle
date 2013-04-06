@@ -85,4 +85,3 @@ class WurstCommandTest extends WurstCommandTestCase
         return $content;
     }
 }
-

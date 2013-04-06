@@ -21,8 +21,8 @@ class WurstCommandTestCase extends \PHPUnit_Framework_TestCase
     public function __construct()
     {
         $resourceDirectory = $this->getResourceDirectory();
-        $this->wurstResourcesDirectory = $resourceDirectory.'wurst'.DIRECTORY_SEPARATOR;;
-        $this->sideResourcesDirectory = $resourceDirectory.'sides'.DIRECTORY_SEPARATOR;
+        $this->wurstResourcesDirectory = $resourceDirectory.'wurst/';
+        $this->sideResourcesDirectory = $resourceDirectory.'sides/';
 
         $this->setCommand();
         $this->commandTester = new CommandTester($this->command);
@@ -33,8 +33,8 @@ class WurstCommandTestCase extends \PHPUnit_Framework_TestCase
 
     protected function getResourceDirectory()
     {
-        $sourceDirectory = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR;
-        $resourceDirectory = $sourceDirectory.'Resources'.DIRECTORY_SEPARATOR;
+        $sourceDirectory = __DIR__.'/../../';
+        $resourceDirectory = $sourceDirectory.'Resources/';
 
         return $resourceDirectory;
     }
