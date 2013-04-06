@@ -19,21 +19,12 @@ class WurstCommand extends ContainerAwareCommand
     const ERROR_WURST_NOT_FOUND = 1;
 
     protected $wurstTypes = array();
+    protected $sides = array();
 
     public function __construct($name = null)
     {
-        $finder = Finder::create()
-            ->in(__DIR__.'/../Resources/wurst')
-            ->name('*.txt')
-            ->depth(0)
-            ->filter(function (SplFileInfo $file) {
-                return $file->isReadable();
-            })
-        ;
-
-        foreach ($finder as $file) {
-            $this->wurstTypes[] = basename($file->getRelativePathName(), '.txt');
-        }
+        $this->wurstType = $this->findFood(__DIR__.'/../Resources/wurst');
+        $this->sides = $this->findFood(__DIR__.'/../Resources/sides');
 
         parent::__construct($name);
     }
@@ -42,22 +33,13 @@ class WurstCommand extends ContainerAwareCommand
     {
         $this
             ->setName('wurst:print')
-            ->addOption('mit-pommes', null, InputOption::VALUE_NONE, 'Mit Pommes?')
-            ->addOption('mit-mayonnaise', null, InputOption::VALUE_NONE, 'Mit Mayo?')
-            ->addOption('mit-beer', null, InputOption::VALUE_NONE, 'Mit Beer?')
-            ->addOption('mit-pretzel', null, InputOption::VALUE_NONE, 'Mit Pretzel?')
-            ->addOption('mit-coffee', null, InputOption::VALUE_NONE, 'Mit Kaffee?')
-            ->addOption('mit-kase', null, InputOption::VALUE_NONE, 'Mit Kase?')
-            ->addOption('mit-chocolate', null, InputOption::VALUE_NONE, 'Mit Chocolate?')
-            ->addOption('mit-wine', null, InputOption::VALUE_NONE, 'Mit Wine?')
-            ->addOption('mit-tea', null, InputOption::VALUE_NONE, 'Mit Tea?')
-            ->addOption('mit-ketchup', null, InputOption::VALUE_NONE, 'Mit Ketchup?')
-            ->addOption('mit-aioli', null, InputOption::VALUE_NONE, 'Mit Aioli?')
-            ->addOption('mit-tomato', null, InputOption::VALUE_NONE, 'Mit Tomato?')
-            ->addOption('mit-senf', null, InputOption::VALUE_NONE, 'Mit Senf?')
             ->addArgument('type', null, sprintf('Which type of würst you want (%s)?', implode(', ', $this->wurstTypes)), 'classic')
             ->setHelp('Please ask your local curry würst retailer.')
         ;
+
+        foreach ($this->sides as $side) {
+            $this->addOption('mit-'.$side, null, InputOption::VALUE_NONE, sprintf('Mit %s?', ucfist($side)));
+        }
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -74,74 +56,30 @@ class WurstCommand extends ContainerAwareCommand
         $wurst = file_get_contents(sprintf(__DIR__.'/../Resources/wurst/%s.txt', $input->getArgument('type')));
         $output->writeln($wurst);
 
-        if ($input->getOption('mit-pommes')) {
-            $pommes = file_get_contents(__DIR__.'/../Resources/sides/pommes.txt');
-            $output->write($pommes);
+        foreach ($this->sides as $side) {
+            if ($input->getOption('mit-'.$side)) {
+                $option = file_get_contents(sprintf(__DIR__.'/../Resources/sides/%s.txt', $side));
+                $output->write($option);
+            }
+        }
+    }
+
+    private function findFood($path)
+    {
+        $yumyum = Finder::create()
+            ->in(__DIR__.'/../Resources/wurst')
+            ->name('*.txt')
+            ->depth(0)
+            ->filter(function (SplFileInfo $file) {
+                return $file->isReadable();
+            })
+        ;
+
+        $food = array();
+        foreach ($yumyum as $yum) {
+            $food[] = basename($file->getRelativePathName(), '.txt');
         }
 
-        if ($input->getOption('mit-mayonnaise')) {
-            $mayo = file_get_contents(__DIR__.'/../Resources/sides/mayonnaise.txt');
-            $output->write($mayo);
-        }
-
-        if ($input->getOption('mit-beer')) {
-            $beer = file_get_contents(__DIR__.'/../Resources/sides/beer.txt');
-            $output->write($beer);
-        }
-
-        if ($input->getOption('mit-pretzel')) {
-            $pretzel = file_get_contents(__DIR__.'/../Resources/sides/pretzel.txt');
-            $output->write($pretzel);
-        }
-
-        if ($input->getOption('mit-coffee')) {
-            $kaffee = file_get_contents(__DIR__.'/../Resources/sides/coffee.txt');
-            $output->write($kaffee);
-        }
-
-        if ($input->getOption('mit-kase')) {
-            $kase = file_get_contents(__DIR__.'/../Resources/sides/kase.txt');
-            $output->write($kase);
-        }
-
-        if ($input->getOption('mit-chocolate')) {
-            $chocolate = file_get_contents(__DIR__.'/../Resources/sides/chocolate.txt');
-            $output->write($chocolate);
-        }
-
-        if ($input->getOption('mit-wine')) {
-            $wine = file_get_contents(__DIR__.'/../Resources/sides/wine.txt');
-            $output->write($wine);
-        }
-
-        if ($input->getOption('mit-tea')) {
-            $tea = file_get_contents(__DIR__.'/../Resources/sides/tea.txt');
-            $output->write($tea);
-        }
-
-        if ($input->getOption('mit-ketchup')) {
-            $ketchup = file_get_contents(__DIR__.'/../Resources/sides/ketchup.txt');
-            $output->write($ketchup);
-        }
-
-        if ($input->getOption('mit-aioli')) {
-            $aioli = file_get_contents(__DIR__.'/../Resources/sides/aioli.txt');
-            $output->write($aioli);
-        }
-
-        if ($input->getOption('mit-tomato')) {
-            $aioli = file_get_contents(__DIR__.'/../Resources/sides/tomato.txt');
-            $output->write($tomato);
-        }
-
-        if ($input->getOption('mit-sfliveWurst')) {
-            $sfliveWurst = file_get_contents(__DIR__.'/../Resources/sides/sfliveWurst.txt');
-            $output->write($sfliveWurst);
-        }
-
-        if ($input->getOption('mit-senf')) {
-            $senf = file_get_contents(__DIR__.'/../Resources/sides/senf.txt');
-            $output->write($senf);
-        }
+        return $food;
     }
 }
