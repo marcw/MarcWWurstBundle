@@ -54,6 +54,7 @@ class WurstCommand extends ContainerAwareCommand
             ->addOption('mit-ketchup', null, InputOption::VALUE_NONE, 'Mit Ketchup?')
             ->addOption('mit-aioli', null, InputOption::VALUE_NONE, 'Mit Aioli?')
             ->addOption('mit-tomato', null, InputOption::VALUE_NONE, 'Mit Tomato?')
+            ->addOption('mit-senf', null, InputOption::VALUE_NONE, 'Mit Senf?')
             ->addArgument('type', null, sprintf('Which type of würst you want (%s)?', implode(', ', $this->wurstTypes)), 'classic')
             ->setHelp('Please ask your local curry würst retailer.')
         ;
@@ -117,7 +118,7 @@ class WurstCommand extends ContainerAwareCommand
             $tea = file_get_contents(__DIR__.'/../Resources/sides/tea.txt');
             $output->write($tea);
         }
-        
+
         if ($input->getOption('mit-ketchup')) {
             $ketchup = file_get_contents(__DIR__.'/../Resources/sides/ketchup.txt');
             $output->write($ketchup);
@@ -127,15 +128,20 @@ class WurstCommand extends ContainerAwareCommand
             $aioli = file_get_contents(__DIR__.'/../Resources/sides/aioli.txt');
             $output->write($aioli);
         }
-        
+
         if ($input->getOption('mit-tomato')) {
             $aioli = file_get_contents(__DIR__.'/../Resources/sides/tomato.txt');
             $output->write($tomato);
         }
-        
+
         if ($input->getOption('mit-sfliveWurst')) {
             $sfliveWurst = file_get_contents(__DIR__.'/../Resources/sides/sfliveWurst.txt');
             $output->write($sfliveWurst);
+        }
+
+        if ($input->getOption('mit-senf')) {
+            $senf = file_get_contents(__DIR__.'/../Resources/sides/senf.txt');
+            $output->write($senf);
         }
     }
 }
