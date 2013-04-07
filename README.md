@@ -30,21 +30,6 @@ Add MarcWWurstBundle in your composer.json:
 }
 ```
 
-Then add its github as a composer repository:
-
-```
-{
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/marcw/MarcWWurstBundle"
-        }
-    ]
-}
-```
-
-Now tell composer to download the bundle by running the command:
-
 ``` bash
 $ php composer.phar update marcw/wurst-bundle
 ```
