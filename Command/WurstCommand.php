@@ -38,7 +38,7 @@ class WurstCommand extends ContainerAwareCommand
         ;
 
         foreach ($this->sides as $side) {
-            $this->addOption('mit-'.$side, null, InputOption::VALUE_NONE, sprintf('Mit %s?', ucfist($side)));
+            $this->addOption('mit-'.$side, null, InputOption::VALUE_NONE, sprintf('Mit %s?', ucfirst($side)));
         }
     }
 
