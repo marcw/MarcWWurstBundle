@@ -77,7 +77,7 @@ class WurstCommand extends ContainerAwareCommand
 
         $food = array();
         foreach ($yumyum as $yum) {
-            $food[] = basename($file->getRelativePathName(), '.txt');
+            $food[] = basename($yum->getRelativePathName(), '.txt');
         }
 
         return $food;
