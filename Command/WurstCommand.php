@@ -23,7 +23,7 @@ class WurstCommand extends ContainerAwareCommand
 
     public function __construct($name = null)
     {
-        $this->wurstType = $this->findFood(__DIR__.'/../Resources/wurst');
+        $this->wurstTypes = $this->findFood(__DIR__.'/../Resources/wurst');
         $this->sides = $this->findFood(__DIR__.'/../Resources/sides');
 
         parent::__construct($name);
@@ -67,7 +67,7 @@ class WurstCommand extends ContainerAwareCommand
     private function findFood($path)
     {
         $yumyum = Finder::create()
-            ->in(__DIR__.'/../Resources/wurst')
+            ->in($path)
             ->name('*.txt')
             ->depth(0)
             ->filter(function (SplFileInfo $file) {
@@ -77,7 +77,7 @@ class WurstCommand extends ContainerAwareCommand
 
         $food = array();
         foreach ($yumyum as $yum) {
-            $food[] = basename($yum->getRelativePathName(), '.txt');
+            $food[] = basename($yum->getRelativePathname(), '.txt');
         }
 
         return $food;
