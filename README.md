@@ -13,7 +13,7 @@ Installation is a quick (I promise!) 3 step process:
 ### Step 1: Download MarcWWurstBundle
 
 Ultimately, the MarcWWurstBundle files should be downloaded to the
-`vendor/bundles/MarcW/Bundle/WurstBundle` directory.
+`vendor/marcw/wurst-bundle/MarcW/Bundle/WurstBundle` directory.
 
 This can be done in several ways, depending on your preference. The first
 method is the standard Symfony2 method.
@@ -25,7 +25,7 @@ Add MarcWWurstBundle in your composer.json:
 ```
 {
     "require": {
-        "marcw/wurst-bundle": "*"
+        "marcw/wurst-bundle": "dev-master"
     }
 }
 ```
