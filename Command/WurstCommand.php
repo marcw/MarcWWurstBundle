@@ -73,6 +73,7 @@ class WurstCommand extends ContainerAwareCommand
             ->filter(function (SplFileInfo $file) {
                 return $file->isReadable();
             })
+            ->sortByName()
         ;
 
         $food = array();
