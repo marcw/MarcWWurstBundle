@@ -2,6 +2,7 @@
     "name": "marcw/wurst-bundle",
     "type": "symfony-bundle",
     "description": "Prints a nice wurst to your shell.",
+    "license": "MIT",
     "keywords": ["wurst"],
     "minimum-stability": "dev",
     "authors": [
