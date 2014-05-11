@@ -16,11 +16,32 @@ use Symfony\Component\Finder\SplFileInfo;
  */
 class WurstCommand extends ContainerAwareCommand
 {
+    /**
+     * @var integer
+     * 
+     * Error was not found
+     */
     const ERROR_WURST_NOT_FOUND = 1;
 
+    /**
+     * @var array
+     * 
+     * Wurst types
+     */
     protected $wurstTypes = array();
+    
+    /**
+     * @var array
+     * 
+     * Sides
+     */
     protected $sides = array();
 
+    /**
+     * Consctruct method
+     * 
+     * @param string $name Name value, by default null
+     */
     public function __construct($name = null)
     {
         $this->wurstTypes = $this->findFood(__DIR__.'/../Resources/wurst');
@@ -29,6 +50,9 @@ class WurstCommand extends ContainerAwareCommand
         parent::__construct($name);
     }
 
+    /**
+     * Command configure method
+     */
     protected function configure()
     {
         $this
@@ -42,6 +66,12 @@ class WurstCommand extends ContainerAwareCommand
         }
     }
 
+    /**
+     * Execute action
+     * 
+     * @param InputInterface  $input  Input object
+     * @param OutputInterface $output Output object
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         if (!in_array($input->getArgument('type'), $this->wurstTypes, true)) {
@@ -64,6 +94,13 @@ class WurstCommand extends ContainerAwareCommand
         }
     }
 
+    /**
+     * Find food method, given a path
+     * 
+     * @param string $path Path where to search
+     * 
+     * @return array Data found
+     */
     private function findFood($path)
     {
         $yumyum = Finder::create()
