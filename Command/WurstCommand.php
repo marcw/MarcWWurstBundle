@@ -18,21 +18,21 @@ class WurstCommand extends ContainerAwareCommand
 {
     /**
      * @var integer
-     * 
+     *
      * Error was not found
      */
     const ERROR_WURST_NOT_FOUND = 1;
 
     /**
      * @var array
-     * 
+     *
      * Wurst types
      */
     protected $wurstTypes = array();
-    
+
     /**
      * @var array
-     * 
+     *
      * Sides
      */
     protected $sides = array();
