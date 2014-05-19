@@ -2,6 +2,10 @@
 
 Prints a nice wurst to your shell. <img src="http://emos.plurk.com/398156630934194ac9929b55f5ff9638_w28_h48.gif" />
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/454f1e7a-57d3-4240-a1c1-a3875ec8bc89/mini.png)](https://insight.sensiolabs.com/projects/454f1e7a-57d3-4240-a1c1-a3875ec8bc89)
+[![Total Downloads](https://poser.pugx.org/marcw/wurst-bundle/downloads.png)](https://packagist.org/packages/marcw/wurst-bundle)
+[![License](https://poser.pugx.org/marcw/wurst-bundle/license.png)](https://packagist.org/packages/marcw/wurst-bundle)
+
 ## Installation
 
 Installation is a quick (I promise!) 3 step process:
