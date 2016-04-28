@@ -35,7 +35,7 @@ Add MarcWWurstBundle in your composer.json:
 ```
 
 ``` bash
-$ php composer.phar update marcw/wurst-bundle
+$ php composer.phar require marcw/wurst-bundle
 ```
 
 **Using submodules**
