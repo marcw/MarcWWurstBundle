@@ -26,7 +26,7 @@ method is the standard Symfony2 method.
 
 Add MarcWWurstBundle in your composer.json:
 
-```
+``` json
 {
     "require": {
         "marcw/wurst-bundle": "dev-master"
